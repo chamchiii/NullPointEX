@@ -1,0 +1,74 @@
+
+1. 프로젝트 생성
+
+	New > Project > Spring - Spring Regacy Project > Spring MVC Project
+	
+	packages : com.javassem.basic 
+	
+	기존의 설치된 패키지와 버전 충돌 에러가 발생하면 pom.xml 을 복사하여 Maven > update project
+
+	
+2. 프로젝트 > Properties
+
+	- Project Facets : java 1.8 변경
+	- server :  tomcat
+	
+3. Servers 창에서 구동하는 톰캣을 더블클릭하여 
+
+	Modules 탭을 열고 Docbase와 path를 프로젝트명과 동일하게
+
+	
+4. 톰캣서버 실행 후 웹브라우저에서 확인
+	` Servers > tomcat 서버 구동 
+	
+	` 웹브라우저에서  http://localhost:8080/패스명(프로젝트명)
+	
+	
+5. pom.xml에 라이브러리 버전 변경 및 라이브러리 추가 
+
+		<!-- ### 버전 변경 ### -->
+				<java-version>1.8</java-version>
+				<org.springframework-version>5.0.8.RELEASE</org.springframework-version>
+				<org.aspectj-version>1.6.10</org.aspectj-version>
+				<org.slf4j-version>1.6.6</org.slf4j-version>
+		
+		<!-- ### 버전 변경 ### -->		
+		<plugin>		            	
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            
+6. 프로젝트 > Maven > Update Project
+
+	Package Explorer에  <JRE System Library[JavaSE-1.6]> 에서  JavaSE-1.8로 변경 확인 
+
+	
+7. [ 추가 ] Lombok 설치
+
+	` 기본적으로 웹 애플리케이션에서 사용하는 VO 객체는 DB 테이블의 column 과 같은 이름의 private 변수를 가지고,
+	  getter setter 메소드를 정의 한 후 toString 메소드를 정의한다. 
+	  이를 자동으로 해준다
+
+	1) https://projectlombok.org 에서 다운로드
+	2) lombok.jar 파일을 더블클릭 실행 또는    ( java -jar lombok.jar )
+	3) 기존 이클립스 실행파일로 기본으로 되어 있어서  [Specify Location] 해당 STS.exe를 선택하고 [Install/Update]
+	4) 해당 STS.exe와 동일한 폴더에 lombok.jar파일 추가되었는지 확인
+	5) 바탕화면에 있던 바로가기 지우고 다시 실행
+	6) pom.xml
+		<!-- ### Lombok ### -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+

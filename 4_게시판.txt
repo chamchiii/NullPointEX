@@ -1,0 +1,29 @@
+
+1. mybatis-config.xml
+
+2. BoardMapper.xml
+
+3. 의존 주입 지정
+	(1) BoardDAOImpl.java
+	
+		@Repository("boardDAO") 
+		public class BoardDAOImpl {
+			@Autowired
+			private SqlSessionTemplate mybatis;
+			
+	(2) BoardServiceImple.java
+	
+		@Service("boardService")
+		public class BoardServiceImpl implements BoardService {
+			@Autowired
+			private BoardDAOImpl boardDAO;	
+	
+	(3) BoardController.java
+	
+		@Controller
+		public class BoardController {	
+			@Autowired
+			private BoardService boardService;
+			
+			각 메소드 마다 @RequestMappting() 연결
+			
